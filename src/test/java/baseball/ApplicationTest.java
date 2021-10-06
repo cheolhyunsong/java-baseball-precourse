@@ -4,6 +4,7 @@ import nextstep.test.NSTest;
 import nextstep.utils.Randoms;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 
@@ -35,6 +36,16 @@ public class ApplicationTest extends NSTest {
                     .thenReturn(5, 8, 9);
             run("713", "1", "597", "589", "2");
             verify("3스트라이크", "게임 끝", "1스트라이크 1볼");
+        }
+    }
+
+    @Test
+    @DisplayName("게임진행유무 검증")
+    void 게임종료_후_계속유무() {
+        try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
+            mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
+                    .thenReturn(8, 4, 3);
+            run("843", "3", "2");
         }
     }
 
