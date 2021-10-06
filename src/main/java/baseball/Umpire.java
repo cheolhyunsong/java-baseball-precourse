@@ -34,6 +34,10 @@ public class Umpire {
     }
 
     public Score getScore() {
-        return this.score;
+        return score;
+    }
+
+    public boolean isWin() {
+        return score.getStrike() == Const.MAX_DIGIT;
     }
 }
