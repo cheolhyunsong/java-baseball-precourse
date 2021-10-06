@@ -39,4 +39,10 @@ public class Validator {
             throw new ValidException(ValidateError.DUPLICATE_NUMBER);
         }
     }
+
+    public void validGameStatusAnswer(String answer) {
+        if(!(Const.START.equals(answer) || Const.END.equals(answer))) {
+            throw new ValidException(ValidateError.INVALID_VALUE);
+        }
+    }
 }

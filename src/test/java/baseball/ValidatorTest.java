@@ -38,15 +38,15 @@ public class ValidatorTest {
     void isValid() {
         Validator validator = new Validator();
 
-        assertThatThrownBy(() -> validator.isValid("1"))
+        assertThatThrownBy(() -> validator.validNumber("1"))
                 .isInstanceOf(ValidException.class)
                 .hasMessageContaining("수의 자릿수가 다릅니다.");
 
-        assertThatThrownBy(() -> validator.isValid("130"))
+        assertThatThrownBy(() -> validator.validNumber("130"))
                 .isInstanceOf(ValidException.class)
-                .hasMessageContaining("유효하지 않은 숫자입니다.");
+                .hasMessageContaining("유효하지 않은 값입니다.");
 
-        assertThatThrownBy(() -> validator.isValid("122"))
+        assertThatThrownBy(() -> validator.validNumber("122"))
                 .isInstanceOf(ValidException.class)
                 .hasMessageContaining("중복된 숫자가 존재합니다.");
     }
