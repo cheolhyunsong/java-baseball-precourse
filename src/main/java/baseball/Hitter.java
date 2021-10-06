@@ -4,19 +4,29 @@ package baseball;
 import common.Const;
 import nextstep.utils.Randoms;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 public class Hitter {
-    private Integer[] pitchingArray;
+    private String battingNumbers;
 
-    public void selectPitching() {
-        pitchingArray = new Integer[Const.MAX_DIGIT];
+    public void selectBatting() {
+        battingNumbers = "";
+        Set<String> battingSet = new LinkedHashSet<>();
+        StringBuilder battingBuilder = new StringBuilder();
 
-        for(int i = 0; i < Const.MAX_DIGIT; i += 1) {
-            int randomNum = Randoms.pickNumberInRange(Const.MIN_NUMBER, Const.MAX_NUMBER);
-            pitchingArray[i] = randomNum;
+        while(battingSet.size() < Const.MAX_DIGIT) {
+            battingSet.add(String.valueOf(Randoms.pickNumberInRange(Const.MIN_NUMBER, Const.MAX_NUMBER)));
         }
+
+        for (String batting : battingSet) {
+            battingBuilder.append(batting);
+        }
+
+        battingNumbers = battingBuilder.toString();
     }
 
-    public Integer[] getPitchingArray() {
-        return this.pitchingArray;
+    public String getBattingNumber() {
+        return battingNumbers;
     }
 }
