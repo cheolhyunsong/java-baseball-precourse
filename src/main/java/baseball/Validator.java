@@ -26,13 +26,13 @@ public class Validator {
         return pitchingSet.size() != Const.MAX_DIGIT;
     }
 
-    public void isValid(String pitchingNumber) {
+    public void validNumber(String pitchingNumber) {
         if(!checkDigit(pitchingNumber)) {
             throw new ValidException(ValidateError.INVALID_DIGIT);
         }
 
         if(!isValidNumber(pitchingNumber)) {
-            throw new ValidException(ValidateError.INVALID_NUMBER);
+            throw new ValidException(ValidateError.INVALID_VALUE);
         }
 
         if(isDuplicated(pitchingNumber)) {
