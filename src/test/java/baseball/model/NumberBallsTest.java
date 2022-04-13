@@ -13,12 +13,12 @@ class NumberBallsTest {
 		assertThatThrownBy(() -> {
 			NumberBalls numberBalls = new NumberBalls("8");
 		}).isInstanceOf(IllegalArgumentException.class)
-			.hasMessageContaining("3자릿수가 아닙니다.");
+			.hasMessageContaining(String.valueOf(NumberBalls.CIPHER));
 
 		assertThatThrownBy(() -> {
 			NumberBalls numberBalls = new NumberBalls("1654");
 		}).isInstanceOf(IllegalArgumentException.class)
-			.hasMessageContaining("3자릿수가 아닙니다.");
+			.hasMessageContaining(String.valueOf(NumberBalls.CIPHER));
 	}
 
 
