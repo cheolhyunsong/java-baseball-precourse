@@ -21,5 +21,22 @@ class NumberBallsTest {
 			.hasMessageContaining(String.valueOf(NumberBalls.CIPHER));
 	}
 
+	@Test
+	@DisplayName("입력값이 1~9의 숫자인지 검증")
+	void valid_if_number_is_between_one_and_nine() {
+		assertThatThrownBy(() -> {
+			NumberBalls numberBalls = new NumberBalls(null);
+		}).isInstanceOf(IllegalArgumentException.class)
+			.hasMessageContaining("입력값이 올바르지 않습니다.");
 
+		assertThatThrownBy(() -> {
+			NumberBalls numberBalls = new NumberBalls("024");
+		}).isInstanceOf(IllegalArgumentException.class)
+			.hasMessageContaining("입력값이 올바르지 않습니다.");
+
+		assertThatThrownBy(() -> {
+			NumberBalls numberBalls = new NumberBalls("abc");
+		}).isInstanceOf(IllegalArgumentException.class)
+			.hasMessageContaining("입력값이 올바르지 않습니다.");
+	}
 }
