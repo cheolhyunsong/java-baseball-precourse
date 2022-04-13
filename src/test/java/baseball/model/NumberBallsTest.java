@@ -39,4 +39,13 @@ class NumberBallsTest {
 		}).isInstanceOf(IllegalArgumentException.class)
 			.hasMessageContaining("입력값이 올바르지 않습니다.");
 	}
+
+	@Test
+	@DisplayName("서로 다른 임의의 수인지 검증")
+	void valid_if_there_are_duplicate_number() {
+		assertThatThrownBy(() -> {
+			NumberBalls numberBalls = new NumberBalls("488");
+		}).isInstanceOf(IllegalArgumentException.class)
+			.hasMessageContaining("입력값이 올바르지 않습니다.");
+	}
 }
