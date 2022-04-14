@@ -15,7 +15,7 @@ public class Balls {
 			pitchingSet.add(new Ball(Character.toString(charNumber)));
 		}
 
-		validDuplication(pitchingNumber);
+		validDuplication();
 	}
 
 	private void validCipher(String pitchingNumber) {
@@ -24,7 +24,7 @@ public class Balls {
 		}
 	}
 
-	private void validDuplication(String pitchingNumber) {
+	private void validDuplication() {
 		if(pitchingSet.size() != CIPHER) {
 			throw new IllegalArgumentException("입력값이 올바르지 않습니다.");
 		}
