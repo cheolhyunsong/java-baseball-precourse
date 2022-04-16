@@ -7,9 +7,17 @@ public class Ball {
 
 	private String number;
 
+	private int number2;
+	private int position;
+
 	public Ball(String pitchingNumber) {
 		valid(pitchingNumber);
 		this.number = pitchingNumber;
+	}
+
+	public Ball(int number, int position) {
+		this.number2 = number;
+		this.position = position;
 	}
 
 	private void valid(String pitchingNumber) {
@@ -22,6 +30,14 @@ public class Ball {
 		}
 	}
 
+	public BallStatus call(Ball ball) {
+		if(this.equals(ball)) {
+			return BallStatus.STRIKE;
+		}
+
+		return null;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)
@@ -29,11 +45,11 @@ public class Ball {
 		if (o == null || getClass() != o.getClass())
 			return false;
 		Ball ball = (Ball)o;
-		return Objects.equals(number, ball.number);
+		return number2 == ball.number2 && position == ball.position;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(NUMBER_REG_EX, number);
+		return Objects.hash(number2, position);
 	}
 }
