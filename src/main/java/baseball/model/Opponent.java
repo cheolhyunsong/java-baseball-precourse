@@ -4,7 +4,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import nextstep.utils.Randoms;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Opponent {
 	private Balls balls = new Balls();
@@ -13,7 +13,7 @@ public class Opponent {
 		Set<Integer> pitchingSet = new LinkedHashSet<>();
 
 		while(pitchingSet.size() < BallNumbers.DIGIT) {
-			pitchingSet.add(Randoms.pickNumberInRange(BallNumbers.MIN_NUMBER, BallNumbers.MAX_NUMBER));
+			pitchingSet.add(Randoms.pickNumberInRange(Ball.MIN_NUMBER, Ball.MAX_NUMBER));
 		}
 
 		balls.clear();

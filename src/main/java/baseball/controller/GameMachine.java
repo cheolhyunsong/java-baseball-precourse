@@ -47,11 +47,16 @@ public class GameMachine {
 
 			score = opponent.getScore(player.getBalls());
 			OutputView.printResult(score);
-		}while(isStopTurn(score));
+		}while(isNextTurn(score));
 	}
 
-	private boolean isStopTurn(Result result) {
-		return !result.isWinPlayer();
+	private boolean isNextTurn(Result result) {
+		if(result.isWinPlayer()) {
+			OutputView.printComplete();
+			return false;
+		}
+
+		return true;
 	}
 
 	private boolean isPlayingGame() {

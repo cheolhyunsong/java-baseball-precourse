@@ -14,11 +14,11 @@ public class OutputView {
 	private static String getScoreMessage(Result result) {
 		StringBuilder resultBuilder = new StringBuilder();
 
-		resultBuilder.append(getStrikeMessage(result));
+		resultBuilder.append(getBallMessage(result));
 		if (resultBuilder.length() > 0) {
 			resultBuilder.append(" ");
 		}
-		resultBuilder.append(getBallMessage(result));
+		resultBuilder.append(getStrikeMessage(result));
 
 		return resultBuilder.toString();
 	}
