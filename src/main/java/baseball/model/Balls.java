@@ -1,6 +1,7 @@
 package baseball.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Balls {
@@ -45,5 +46,9 @@ public class Balls {
 		}
 
 		return status;
+	}
+
+	public List<Ball> getBalls() {
+		return Collections.unmodifiableList(balls);
 	}
 }
