@@ -3,29 +3,20 @@ package baseball.model;
 import java.util.Objects;
 
 public class Ball {
-	private final String NUMBER_REG_EX = "^[1-9]*$";
+	private final int MAX_NUMBER = 9;
+	private final int MIN_NUMBER = 1;
 
-	private String number;
-
-	private int number2;
+	private int pitchingNumber;
 	private int position;
 
-	public Ball(String pitchingNumber) {
+	public Ball(int pitchingNumber, int position) {
 		valid(pitchingNumber);
-		this.number = pitchingNumber;
-	}
-
-	public Ball(int number, int position) {
-		this.number2 = number;
+		this.pitchingNumber = pitchingNumber;
 		this.position = position;
 	}
 
-	private void valid(String pitchingNumber) {
-		if(Objects.isNull(pitchingNumber)) {
-			throw new IllegalArgumentException("입력값이 올바르지 않습니다.");
-		}
-
-		if(!pitchingNumber.matches(NUMBER_REG_EX)) {
+	private void valid(int pitchingNumber) {
+		if(pitchingNumber < MIN_NUMBER  || MAX_NUMBER < pitchingNumber) {
 			throw new IllegalArgumentException("입력값이 올바르지 않습니다.");
 		}
 	}
@@ -35,7 +26,7 @@ public class Ball {
 			return BallStatus.STRIKE;
 		}
 
-		if(isEqualNumber(ball.number2)) {
+		if(isEqualNumber(ball.pitchingNumber)) {
 			return BallStatus.BALL;
 		}
 
@@ -43,7 +34,7 @@ public class Ball {
 	}
 
 	private boolean isEqualNumber(int number) {
-		return number2 == number;
+		return pitchingNumber == number;
 	}
 
 	@Override
@@ -53,11 +44,11 @@ public class Ball {
 		if (o == null || getClass() != o.getClass())
 			return false;
 		Ball ball = (Ball)o;
-		return number2 == ball.number2 && position == ball.position;
+		return pitchingNumber == ball.pitchingNumber && position == ball.position;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(number2, position);
+		return Objects.hash(pitchingNumber, position);
 	}
 }
