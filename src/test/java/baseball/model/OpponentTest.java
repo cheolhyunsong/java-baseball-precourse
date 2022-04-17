@@ -12,6 +12,6 @@ class OpponentTest {
 		Opponent opponent = new Opponent();
 		opponent.selectPitching();
 
-		assertThat(opponent.getBallSize()).isEqualTo(Ruler.DIGIT);
+		assertThat(opponent.getBallSize()).isEqualTo(BallNumbers.DIGIT);
 	}
 }
