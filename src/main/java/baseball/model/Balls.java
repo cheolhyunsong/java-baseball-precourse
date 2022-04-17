@@ -1,31 +1,40 @@
 package baseball.model;
 
-import java.util.LinkedHashSet;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Balls {
-	public static int CIPHER = 3;
+	public static int DIGIT = 3;
 
-	private Set<Ball> pitchingSet = new LinkedHashSet<>();
+	private List<Ball> balls = new ArrayList<>();
 
-	public Balls(String pitchingNumber) {
-		validCipher(pitchingNumber);
-
-		for(char charNumber : pitchingNumber.toCharArray()) {
-			pitchingSet.add(new Ball(Character.toString(charNumber)));
-		}
-
-		validDuplication();
+	public Balls(List<Integer> balls) {
+		validCipher(balls);
+		setBalls(balls);
 	}
 
-	private void validCipher(String pitchingNumber) {
-		if(pitchingNumber.length() != CIPHER) {
-			throw new IllegalArgumentException(String.format("유효하지 않은 자릿수입니다(%s 자릿수).", CIPHER));
+	private void validCipher(List<Integer> balls) {
+		if(balls.size() != DIGIT) {
+			throw new IllegalArgumentException(String.format("유효하지 않은 자릿수입니다(%s 자릿수).", DIGIT));
 		}
 	}
 
-	private void validDuplication() {
-		if(pitchingSet.size() != CIPHER) {
+	private void setBalls(List<Integer> numbers) {
+		Set<Integer> pitchingSet = new HashSet<>();
+
+		for(int position = 0; position < DIGIT; position += 1) {
+			int ballNumber = numbers.get(position);
+			pitchingSet.add(ballNumber);
+			balls.add(new Ball(ballNumber, position));
+		}
+
+		validDuplication(pitchingSet);
+	}
+
+	private void validDuplication(Set<Integer> pitchingSet) {
+		if(pitchingSet.size() != DIGIT) {
 			throw new IllegalArgumentException("입력값이 올바르지 않습니다.");
 		}
 	}
