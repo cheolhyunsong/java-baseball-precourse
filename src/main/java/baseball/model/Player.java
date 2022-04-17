@@ -11,7 +11,6 @@ public class Player {
 
 		balls.clear();
 		for(int number: numbers) {
-			BallNumbers.validScale(number);
 			balls.add(number);
 		}
 	}

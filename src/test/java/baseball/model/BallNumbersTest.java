@@ -9,18 +9,6 @@ import org.junit.jupiter.api.Test;
 
 class BallNumbersTest {
 	@Test
-	@DisplayName("입력값이 1~9의 숫자인지 검증")
-	void valid_if_number_is_between_one_and_nine() {
-		assertThatThrownBy(() -> BallNumbers.validScale(0))
-			.isInstanceOf(IllegalArgumentException.class)
-			.hasMessageContaining("입력값이 올바르지 않습니다.");
-
-		assertThatThrownBy(() -> BallNumbers.validScale(10))
-			.isInstanceOf(IllegalArgumentException.class)
-			.hasMessageContaining("입력값이 올바르지 않습니다.");
-	}
-
-	@Test
 	@DisplayName("3자릿수 입력 검증")
 	void valid_cipher() {
 		assertThatThrownBy(() -> BallNumbers.validCipher(Arrays.asList(8, 2)))

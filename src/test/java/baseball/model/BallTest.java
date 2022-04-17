@@ -1,6 +1,6 @@
 package baseball.model;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,5 +14,17 @@ class BallTest {
 		assertThat(ball.call(new Ball(2, 3))).isEqualTo(BallStatus.STRIKE);
 		assertThat(ball.call(new Ball(2, 1))).isEqualTo(BallStatus.BALL);
 		assertThat(ball.call(new Ball(1, 1))).isEqualTo(BallStatus.NOTHING);
+	}
+
+	@Test
+	@DisplayName("입력값이 1~9의 숫자인지 검증")
+	void valid_if_number_is_between_one_and_nine() {
+		assertThatThrownBy(() -> new Ball(0, 1))
+			.isInstanceOf(IllegalArgumentException.class)
+			.hasMessageContaining("입력값이 올바르지 않습니다.");
+
+		assertThatThrownBy(() -> new Ball(10, 0))
+			.isInstanceOf(IllegalArgumentException.class)
+			.hasMessageContaining("입력값이 올바르지 않습니다.");
 	}
 }
