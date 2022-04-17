@@ -25,11 +25,11 @@ class RulerTest {
 	void valid_cipher() {
 		assertThatThrownBy(() -> Ruler.validCipher(Arrays.asList(8, 2)))
 			.isInstanceOf(IllegalArgumentException.class)
-			.hasMessageContaining(String.valueOf(Balls.DIGIT));
+			.hasMessageContaining(String.valueOf(Ruler.DIGIT));
 
 		assertThatThrownBy(() -> Ruler.validCipher(Arrays.asList(1, 6, 4, 5)))
 			.isInstanceOf(IllegalArgumentException.class)
-			.hasMessageContaining(String.valueOf(Balls.DIGIT));
+			.hasMessageContaining(String.valueOf(Ruler.DIGIT));
 	}
 
 	@Test

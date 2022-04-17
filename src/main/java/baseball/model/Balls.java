@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Balls {
-	public static int DIGIT = 3;
-
 	private List<Ball> balls = new ArrayList<>();
 
 	public Balls() {
@@ -27,5 +25,25 @@ public class Balls {
 
 	public int size() {
 		return balls.size();
+	}
+
+	public BallStatus call(Ball opponentBall) {
+		List<BallStatus> statuses = new ArrayList<>();
+
+		for(Ball ball: balls) {
+			statuses.add(ball.call(opponentBall));
+		}
+
+		return filterBallStatus(statuses);
+	}
+
+	private BallStatus filterBallStatus(List<BallStatus> statuses) {
+		BallStatus status = BallStatus.NOTHING;
+
+		for(int index = 0; index < statuses.size() && status.isNothing(); index += 1) {
+			status = statuses.get(index);
+		}
+
+		return status;
 	}
 }
