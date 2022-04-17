@@ -35,7 +35,15 @@ public class Ball {
 			return BallStatus.STRIKE;
 		}
 
-		return null;
+		if(isEqualNumber(ball.number2)) {
+			return BallStatus.BALL;
+		}
+
+		return BallStatus.NOTHING;
+	}
+
+	private boolean isEqualNumber(int number) {
+		return number2 == number;
 	}
 
 	@Override
